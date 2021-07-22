@@ -1,10 +1,9 @@
 import logging
 
 import asyncio
-from console.utils import set_title
 
 from checker.color import Color
-from checker.functions import create_config, parse_config, clear
+from checker.functions import create_config, parse_config, clear, set_title
 
 
 __title__ = 'Monolith'

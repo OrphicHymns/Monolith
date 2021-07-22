@@ -8,7 +8,6 @@ from random import choice
 import queue
 import asyncio
 from aiohttp import ClientTimeout
-from console.utils import set_title
 from pynput.keyboard import Listener
 
 from checker import loop, clear
@@ -22,7 +21,7 @@ from checker.capture.hypixel import check_hypixel
 from checker.capture.optifine import check_optifine
 from checker.constants import ASCII_TITLE, COMBO_REG
 from checker import __title__, __version__, __author__, __license__
-from checker.functions import load_file, get_input, parse_proxy, create_results
+from checker.functions import load_file, get_input, parse_proxy, create_results, set_title
 
 
 class Monolith(object):
