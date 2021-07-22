@@ -1,4 +1,5 @@
 import os
+import ctypes
 import logging
 from time import strftime
 from uuid import uuid4
@@ -8,7 +9,6 @@ import toml
 import asyncio
 from aiofiles import open
 from easygui import fileopenbox
-from console.utils import clear_lines
 from aiohttp_proxy import ProxyConnector, ProxyType
 
 from checker.types import File
@@ -18,6 +18,10 @@ from checker.constants import CONFIG
 
 def clear() -> None:
     os.system("cls" if os.name == "nt" else "clear")
+
+
+def set_title(title: str) -> None:
+    ctypes.windll.kernel32.SetConsoleTitleW(title)
 
 
 def create_mojang_payload(email: str, password: str) -> dict:
@@ -37,8 +41,7 @@ async def error(message: str) -> None:
     print(f"{Color.WHITE}[{Color.RED}ERROR{Color.WHITE}] {message}")
 
     for i in range(5):
-        print(f"{Color.WHITE}[{Color.RED}ERROR{Color.WHITE}] This program will continue in {5 - i} seconds.")
-        clear_lines(1)
+        print(f"{Color.WHITE}[{Color.RED}ERROR{Color.WHITE}] This program will continue in {5 - i} seconds.", end="\r")
         await asyncio.sleep(1)
 
     clear()
